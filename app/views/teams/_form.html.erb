@@ -1,0 +1,53 @@
+<%= form_with(model: @team, local: true) do |f| %>
+  <%# if team.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>-->
+
+<!--      <ul>-->
+      <%# team.errors.full_messages.each do |message| %>
+<!--        <li><%#= message %></li>-->
+      <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
+    <div class="field">
+      <strong><%= f.label :Team %></strong>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <div class="field">
+        <%= f.label :abbreviation %>
+        <%= f.text_field :abbreviation %>
+      </div>
+    </div>
+  <%= f.fields_for :trainer do |trainer| %>
+    <div class="field">
+      <strong><%= trainer.label :Manager %></strong>
+      <%= trainer.label :first_name %>
+      <%= trainer.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= trainer.label :last_name %>
+      <%= trainer.text_field :last_name %>
+    </div>
+  <% end %>
+    <%= f.fields_for :players do |player| %>
+    <strong><%= player.label :Player %></strong>
+      <div class="field">
+        <%= player.label :first_name %>
+        <%= player.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= player.label :last_name %>
+        <%= player.text_field :last_name %>
+      </div>
+    <div class="field">
+      <%= player.label :position %>
+      <%= player.text_field :position %>
+    </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+

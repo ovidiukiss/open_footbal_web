@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  Abbreviation: <%= @team.abbreviation %>
+</p>
+
+<p>
+  <strong>Trainer:</strong>
+<p>
+  First name: <%= @team.trainer.first_name %>
+<p>
+  Last name: <%= @team.trainer.last_name %>
+</p>
+</p>
+</p>
+<p>
+  <strong>Players:</strong>
+  <% @team.players.each do |player| %>
+  <p>
+    First name: <%= player.first_name %>
+  </p>
+  <p>
+    Last name: <%= player.last_name %>
+  </p>
+  <p>
+    Position: <%= player.position %>
+  </p>
+  <%end%>
+</p>
+
+
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>
