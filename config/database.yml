@@ -17,6 +17,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: ec2-54-246-92-116.eu-west-1.compute.amazonaws.com
+  database: dbiie96dd59bgi
+  post: 5432
+  username: huxuospgaivsir
+  password: 0172d2465fb3145ff24c4260b33dc20b843b1086ae707e4a8669fbe9d7d752b2
+
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -79,7 +85,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: open_footbal_web_production
-  username: open_footbal_web
-  password: <%= ENV['OPEN_FOOTBAL_WEB_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: ec2-54-246-92-116.eu-west-1.compute.amazonaws.com
+  database: dbiie96dd59bgi
+  post: 5432
+  username: huxuospgaivsir
+  password: 0172d2465fb3145ff24c4260b33dc20b843b1086ae707e4a8669fbe9d7d752b2
