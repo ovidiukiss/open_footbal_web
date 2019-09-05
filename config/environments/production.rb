@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -54,7 +56,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -83,11 +85,22 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.action_mailer.default_url_options = { host: 'smtp.mailgun.org' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    #address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'sandboxf3971252c00042fbbded8a186f289aa1.mailgun.org',
+    user_name: 'brad@sandboxf3971252c00042fbbded8a186f289aa1.mailgun.org',
+    password: '5716cb4e0c0398b57bae820d7525d2df-4167c382-8279d207',
+    enable_starttls_auto: true
+  }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
