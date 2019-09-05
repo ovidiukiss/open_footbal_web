@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: %i[show edit update destroy]
 
   # GET /teams
   # GET /teams.json
@@ -69,7 +71,8 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name, :abbreviation, trainer_attributes: %i[id first_name last_name],
-                                                       players_attributes: %i[id first_name last_name position])
+    params.require(:team).permit(:name, :abbreviation,
+                                 trainer_attributes: %i[id first_name last_name],
+                                 players_attributes: %i[id first_name last_name position _destroy])
   end
 end

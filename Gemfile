@@ -5,6 +5,9 @@ ruby '2.6.3'
 
 gem 'dotenv-rails'
 gem 'rest-client'
+gem 'cocoon'
+gem 'jquery-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

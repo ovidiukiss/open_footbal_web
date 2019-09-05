@@ -91,6 +91,8 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.serve_static_assets = true
+
   config.action_mailer.default_url_options = { host: ENV['APP_URL'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

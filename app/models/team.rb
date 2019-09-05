@@ -6,7 +6,7 @@ class Team < ApplicationRecord
   has_many :players, dependent: :destroy
   has_one :trainer, dependent: :destroy
 
-  accepts_nested_attributes_for :players
+  accepts_nested_attributes_for :players, allow_destroy: true
   accepts_nested_attributes_for :trainer
 
   def add_abbreviation_from_name!

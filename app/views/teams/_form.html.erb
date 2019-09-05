@@ -1,15 +1,15 @@
 <%= form_with(model: @team, local: true) do |f| %>
-  <%# if team.errors.any? %>
-<!--    <div id="error_explanation">-->
-<!--      <h2><%#= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>-->
+  <% if team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
 
-<!--      <ul>-->
-      <%# team.errors.full_messages.each do |message| %>
-<!--        <li><%#= message %></li>-->
-      <%# end %>
-<!--      </ul>-->
-<!--    </div>-->
-  <%# end %>
+      <ul>
+      <% team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
     <div class="field">
       <strong><%= f.label :Team %></strong>
       <%= f.label :name %>
@@ -30,21 +30,15 @@
       <%= trainer.text_field :last_name %>
     </div>
   <% end %>
+
+  <div id='player'>
     <%= f.fields_for :players do |player| %>
-    <strong><%= player.label :Player %></strong>
-      <div class="field">
-        <%= player.label :first_name %>
-        <%= player.text_field :first_name %>
-      </div>
-      <div class="field">
-        <%= player.label :last_name %>
-        <%= player.text_field :last_name %>
-      </div>
-    <div class="field">
-      <%= player.label :position %>
-      <%= player.text_field :position %>
-    </div>
+      <%= render 'player_fields', :f => player %>
     <% end %>
+    <div class='players'>
+      <%= link_to_add_association 'add more players', f, :players %>
+    </div>
+  </div>
 
     <div class="actions">
       <%= f.submit %>

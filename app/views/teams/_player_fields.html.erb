@@ -1,0 +1,16 @@
+<div class='nested-fields'>
+    <strong><%= f.label :Player %></strong>
+    <div class="field">
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+      </div>
+      <div class="field">
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+      </div>
+    <div class="field">
+<%= f.label :position %>
+<%= f.text_field :position %>
+    </div>
+  <%= link_to_remove_association "remove players", f %>
+</div>
