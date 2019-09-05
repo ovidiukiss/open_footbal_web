@@ -94,7 +94,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'smtp.mailgun.org' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    #address: 'smtp.gmail.com',
+    address: 'smtp.mailgun.org',
     port: 587,
     domain: 'sandboxf3971252c00042fbbded8a186f289aa1.mailgun.org',
     user_name: 'brad@sandboxf3971252c00042fbbded8a186f289aa1.mailgun.org',
